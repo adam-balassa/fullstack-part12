@@ -1,7 +1,7 @@
 FROM node:16 as build
 WORKDIR /usr/src/app
 COPY . .
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 ARG REACT_APP_BACKEND_URL
 ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL

@@ -1,0 +1,41 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_BACKEND_URL: http://backend:3003
+    container_name: blog-fe
+
+  backend:
+    build: 
+      context: ./backend
+    container_name: blog-be
+    environment:
+      MONGODB_URI: mongodb://blog_user:blog_pass@mongo:27017/blogs
+      REDIS_URL: redis://redis:6379
+      SECRET: prodSecret  # Proper secret management missing
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+     - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: blogs
+    container_name: mongo
+    volumes:
+      - ./backend/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    container_name: reverse-proxy
+    depends_on:
+      - frontend
+      - backend
