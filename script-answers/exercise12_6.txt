@@ -1,0 +1,23 @@
+Script started on 2022-06-10 11:26:45+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="156" LINES="16"]
+]0;adam@adam-balassa: ~/school/fullstack-part12/todo-app/todo-backend[01;32madam@adam-balassa[00m:[01;34m~/school/fullstack-part12/todo-app/todo-backend[00m$ docker-compose up
+Creating network "todo-backend_default" with the default driver
+Creating todo-backend ... 
+[1A[2KCreating todo-backend ... [32mdone[0m[1BAttaching to todo-backend
+[36mtodo-backend |[0m 
+[36mtodo-backend |[0m > todo-express-backend@0.0.0 start
+[36mtodo-backend |[0m > node ./bin/www
+[36mtodo-backend |[0m 
+[36mtodo-backend |[0m [0mGET / [32m200 [0m1.475 ms - 12[0m
+[36mtodo-backend |[0m [0mGET / [32m200 [0m0.366 ms - 12[0m
+[36mtodo-backend |[0m [0mGET / [32m200 [0m0.287 ms - 12[0m
+[36mtodo-backend |[0m [0mGET / [32m200 [0m0.201 ms - 12[0m
+[36mtodo-backend |[0m [0mGET / [32m200 [0m0.344 ms - 12[0m
+^CGracefully stopping... (press Ctrl+C again to force)
+Stopping todo-backend ... 
+[1A[2KStopping todo-backend ... [32mdone[0m[1B]0;adam@adam-balassa: ~/school/fullstack-part12/todo-app/todo-backend[01;32madam@adam-balassa[00m:[01;34m~/school/fullstack-part12/todo-app/todo-backend[00m$ docker-compose up[K[Kdown
+Removing todo-backend ... 
+[1A[2KRemoving todo-backend ... [32mdone[0m[1BRemoving network todo-backend_default
+]0;adam@adam-balassa: ~/school/fullstack-part12/todo-app/todo-backend[01;32madam@adam-balassa[00m:[01;34m~/school/fullstack-part12/todo-app/todo-backend[00m$ exit
+exit
+
+Script done on 2022-06-10 11:27:22+03:00 [COMMAND_EXIT_CODE="0"]
