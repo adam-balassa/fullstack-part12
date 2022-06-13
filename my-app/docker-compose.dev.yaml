@@ -1,0 +1,35 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    ports: [3000:3000]
+    volumes:
+      - ./frontend:/usr/src/app
+    container_name: blog-fe-dev
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    container_name: blog-be-dev
+    environment:
+      MONGODB_URI: mongodb://blog_user:blog_pass@mongo:27017/blogs
+      REDIS_URL: redis://redis:6379
+      SECRET: devDecret123
+    volumes:
+      - ./backend:/usr/src/app
+    ports: [3003:3003]
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo
+    ports:
+     - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: blogs
+    volumes:
+      - ./backend/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
